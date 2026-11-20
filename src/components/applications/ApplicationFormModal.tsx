@@ -205,7 +205,7 @@ export const ApplicationFormModal: React.FC = () => {
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Step Navigation Tabs */}
-        <div className="flex items-center gap-1 border-b border-slate-800 pb-2 overflow-x-auto text-xs">
+        <div className="flex items-center gap-1 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto text-xs">
           {[
             { id: 'core', label: '1. Role & Status' },
             { id: 'compensation', label: '2. Salary & Links' },
@@ -218,8 +218,8 @@ export const ApplicationFormModal: React.FC = () => {
               onClick={() => setActiveTab(tab.id as typeof activeTab)}
               className={`px-3 py-1.5 rounded-lg font-medium transition-colors shrink-0 ${
                 activeTab === tab.id
-                  ? 'bg-indigo-600/15 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                  ? 'bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-600/15 dark:text-indigo-300 dark:border-indigo-500/30'
+                  : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/40'
               }`}
             >
               {tab.label}
@@ -382,7 +382,7 @@ export const ApplicationFormModal: React.FC = () => {
               </Select>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1.5">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5">
                   Opportunity Excitement (1-5)
                 </label>
                 <div className="flex items-center gap-2 py-2">
@@ -395,12 +395,12 @@ export const ApplicationFormModal: React.FC = () => {
                     >
                       <Star
                         className={`w-5 h-5 ${
-                          star <= rating ? 'fill-amber-400 text-amber-400' : 'text-slate-700'
+                          star <= rating ? 'fill-amber-400 text-amber-400' : 'text-slate-300 dark:text-slate-700'
                         }`}
                       />
                     </button>
                   ))}
-                  <span className="text-xs text-slate-400 ml-2">{rating}/5 Stars</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400 ml-2">{rating}/5 Stars</span>
                 </div>
               </div>
             </div>
@@ -460,7 +460,7 @@ export const ApplicationFormModal: React.FC = () => {
         {activeTab === 'notes' && (
           <div className="space-y-4 animate-in fade-in duration-150">
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5 flex items-center gap-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
                 <FileText className="w-3.5 h-3.5 text-slate-400" />
                 Job Description & Requirements
               </label>
@@ -469,12 +469,12 @@ export const ApplicationFormModal: React.FC = () => {
                 value={jobDescription}
                 onChange={(e) => setJobDescription(e.target.value)}
                 placeholder="Paste key responsibilities, tech stack, and qualifications here..."
-                className="w-full bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-500 text-sm rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/80 leading-relaxed"
+                className="w-full bg-white dark:bg-slate-900/60 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/80 leading-relaxed transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-300 mb-1.5 flex items-center gap-1.5">
+              <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-1.5">
                 <Star className="w-3.5 h-3.5 text-amber-400" />
                 Personal Notes & Strategy
               </label>
@@ -483,14 +483,14 @@ export const ApplicationFormModal: React.FC = () => {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Referral notes, interview impressions, prep topics, salary negotiations..."
-                className="w-full bg-slate-900/60 border border-slate-800 text-slate-100 placeholder-slate-500 text-sm rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/80 leading-relaxed"
+                className="w-full bg-white dark:bg-slate-900/60 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/80 leading-relaxed transition-colors"
               />
             </div>
           </div>
         )}
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between pt-4 border-t border-slate-800">
+        <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
             {activeTab !== 'core' && (
               <Button
