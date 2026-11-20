@@ -39,7 +39,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
         whileHover={{ y: -2 }}
         transition={{ duration: 0.15 }}
         onClick={() => setActiveJob(application)}
-        className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 hover:shadow-card-dark transition-all duration-200 cursor-pointer flex flex-col justify-between group relative"
+        className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 shadow-xs dark:shadow-none hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between group relative"
       >
         {/* Top Header: Avatar, Company, Role, Menu */}
         <div>
@@ -47,11 +47,11 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
             <div className="flex items-center gap-3 min-w-0">
               <CompanyAvatar company={application.company} size="md" />
               <div className="min-w-0">
-                <span className="text-xs font-semibold text-slate-300 block truncate group-hover:text-white transition-colors">
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 block truncate group-hover:text-indigo-600 dark:group-hover:text-white transition-colors">
                   {application.company}
                 </span>
                 <span className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
-                  <MapPin className="w-3 h-3 text-slate-500" />
+                  <MapPin className="w-3 h-3 text-slate-400 dark:text-slate-500" />
                   <span className="truncate">{application.location}</span>
                 </span>
               </div>
@@ -63,20 +63,20 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
                 onClick={() => toggleFavorite(application.id)}
                 className={`p-1.5 rounded-lg transition-colors ${
                   application.favorite
-                    ? 'text-amber-400 bg-amber-500/10'
-                    : 'text-slate-500 hover:text-slate-300'
+                    ? 'text-amber-500 bg-amber-500/10'
+                    : 'text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300'
                 }`}
                 title="Bookmark"
               >
                 <Bookmark
-                  className={`w-4 h-4 ${application.favorite ? 'fill-amber-400' : ''}`}
+                  className={`w-4 h-4 ${application.favorite ? 'fill-amber-500' : ''}`}
                 />
               </button>
 
               <div className="relative">
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-1.5 rounded-lg text-slate-500 hover:text-white hover:bg-slate-800 transition-colors"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 dark:text-slate-500 dark:hover:text-white dark:hover:bg-slate-800 transition-colors"
                   title="More actions"
                 >
                   <MoreVertical className="w-4 h-4" />
@@ -84,7 +84,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
 
                 {isMenuOpen && (
                   <div
-                    className="absolute right-0 top-8 w-44 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl p-1 z-30 text-xs"
+                    className="absolute right-0 top-8 w-44 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl p-1 z-30 text-xs"
                     onClick={(e) => e.stopPropagation()}
                   >
                     <button
@@ -92,7 +92,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
                         setIsMenuOpen(false);
                         openEditModal(application);
                       }}
-                      className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors text-left"
+                      className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-100 dark:hover:text-white dark:hover:bg-slate-800 transition-colors text-left"
                     >
                       <Edit3 className="w-3.5 h-3.5 text-slate-400" />
                       Edit Application
@@ -102,7 +102,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
                         href={application.jobUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors text-left"
+                        className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:text-slate-900 hover:bg-slate-100 dark:hover:text-white dark:hover:bg-slate-800 transition-colors text-left"
                       >
                         <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                         View Job Posting
@@ -113,9 +113,9 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
                         setIsMenuOpen(false);
                         setIsDeleteConfirmOpen(true);
                       }}
-                      className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-rose-400 hover:bg-rose-500/10 transition-colors text-left"
+                      className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors text-left"
                     >
-                      <Trash2 className="w-3.5 h-3.5 text-rose-400" />
+                      <Trash2 className="w-3.5 h-3.5 text-rose-500 dark:text-rose-400" />
                       Delete
                     </button>
                   </div>
@@ -125,7 +125,7 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
           </div>
 
           {/* Job Title */}
-          <h3 className="text-sm sm:text-base font-bold text-slate-100 group-hover:text-indigo-300 transition-colors line-clamp-2 leading-snug mb-3">
+          <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors line-clamp-2 leading-snug mb-3">
             {application.jobTitle}
           </h3>
 
@@ -138,13 +138,13 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
         </div>
 
         {/* Footer Details: Salary & Important Dates */}
-        <div className="pt-3 border-t border-slate-800/80 text-xs space-y-2">
-          <div className="flex items-center justify-between text-slate-300">
-            <span className="text-[11px] text-slate-500 flex items-center gap-1">
+        <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 text-xs space-y-2">
+          <div className="flex items-center justify-between text-slate-600 dark:text-slate-300">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
               <DollarSign className="w-3 h-3 text-slate-400" />
               Salary:
             </span>
-            <span className="font-semibold text-slate-200">
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
               {formatSalaryRange(
                 application.salaryMin,
                 application.salaryMax,
@@ -155,17 +155,17 @@ export const ApplicationCard: React.FC<ApplicationCardProps> = ({ application })
           </div>
 
           {application.interviewDate ? (
-            <div className="flex items-center justify-between text-purple-300 bg-purple-500/10 px-2.5 py-1 rounded-lg border border-purple-500/20">
+            <div className="flex items-center justify-between text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-500/10 px-2.5 py-1 rounded-lg border border-purple-200 dark:border-purple-500/20">
               <span className="text-[11px] flex items-center gap-1">
-                <Clock className="w-3 h-3 text-purple-400" />
+                <Clock className="w-3 h-3 text-purple-600 dark:text-purple-400" />
                 Interview:
               </span>
               <span className="font-semibold">{formatRelativeDays(application.interviewDate)}</span>
             </div>
           ) : (
-            <div className="flex items-center justify-between text-slate-500 text-[11px]">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-[11px]">
               <span className="flex items-center gap-1">
-                <Calendar className="w-3 h-3 text-slate-500" />
+                <Calendar className="w-3 h-3 text-slate-400 dark:text-slate-500" />
                 Applied:
               </span>
               <span>{formatDate(application.appliedDate)}</span>
