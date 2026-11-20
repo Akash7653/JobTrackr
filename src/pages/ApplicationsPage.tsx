@@ -129,10 +129,10 @@ export const ApplicationsPage: React.FC = () => {
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
             Job Applications
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
             Manage, filter, and track all your active career opportunities.
           </p>
         </div>
@@ -167,8 +167,8 @@ export const ApplicationsPage: React.FC = () => {
 
       {/* Batch Action Bar (if selected) */}
       {selectedIds.length > 0 && (
-        <div className="p-3 px-4 rounded-xl bg-indigo-950/40 border border-indigo-500/30 flex items-center justify-between animate-in fade-in duration-150">
-          <span className="text-xs font-semibold text-indigo-300">
+        <div className="p-3 px-4 rounded-xl bg-indigo-50 border border-indigo-200 dark:bg-indigo-950/40 dark:border-indigo-500/30 flex items-center justify-between animate-in fade-in duration-150">
+          <span className="text-xs font-semibold text-indigo-800 dark:text-indigo-300">
             {selectedIds.length} application{selectedIds.length === 1 ? '' : 's'} selected
           </span>
           <div className="flex items-center gap-2">
@@ -226,11 +226,11 @@ export const ApplicationsPage: React.FC = () => {
         </div>
       ) : (
         /* Table View */
-        <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50">
+        <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 shadow-xs dark:shadow-none">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-slate-800 bg-slate-900/90 text-slate-400 font-semibold tracking-wider uppercase text-[11px]">
+                <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/90 text-slate-600 dark:text-slate-400 font-semibold tracking-wider uppercase text-[11px]">
                   <th className="py-3 px-4 w-10">
                     <input
                       type="checkbox"
@@ -239,7 +239,7 @@ export const ApplicationsPage: React.FC = () => {
                         selectedIds.length === filteredApplications.length
                       }
                       onChange={handleSelectAll}
-                      className="rounded border-slate-700 bg-slate-800 text-indigo-600 focus:ring-0 cursor-pointer"
+                      className="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-indigo-600 focus:ring-0 cursor-pointer"
                     />
                   </th>
                   <th className="py-3 px-4">Company & Role</th>
@@ -251,15 +251,15 @@ export const ApplicationsPage: React.FC = () => {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
                 {filteredApplications.map((app) => {
                   const isSelected = selectedIds.includes(app.id);
                   return (
                     <tr
                       key={app.id}
                       onClick={() => setActiveJob(app)}
-                      className={`hover:bg-slate-800/40 transition-colors cursor-pointer group ${
-                        isSelected ? 'bg-indigo-950/20' : ''
+                      className={`hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors cursor-pointer group ${
+                        isSelected ? 'bg-indigo-50/60 dark:bg-indigo-950/20' : ''
                       }`}
                     >
                       <td className="py-3 px-4" onClick={(e) => e.stopPropagation()}>
@@ -267,7 +267,7 @@ export const ApplicationsPage: React.FC = () => {
                           type="checkbox"
                           checked={isSelected}
                           onChange={(e) => handleToggleSelect(app.id, e as any)}
-                          className="rounded border-slate-700 bg-slate-800 text-indigo-600 focus:ring-0 cursor-pointer"
+                          className="rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-indigo-600 focus:ring-0 cursor-pointer"
                         />
                       </td>
 
@@ -275,13 +275,13 @@ export const ApplicationsPage: React.FC = () => {
                         <div className="flex items-center gap-3">
                           <CompanyAvatar company={app.company} size="sm" />
                           <div className="min-w-0">
-                            <div className="font-bold text-slate-200 group-hover:text-indigo-300 transition-colors truncate">
+                            <div className="font-bold text-slate-900 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors truncate">
                               {app.company}
                             </div>
-                            <div className="text-slate-400 truncate">{app.jobTitle}</div>
+                            <div className="text-slate-500 dark:text-slate-400 truncate">{app.jobTitle}</div>
                           </div>
                           {app.favorite && (
-                            <Bookmark className="w-3.5 h-3.5 fill-amber-400 text-amber-400 shrink-0" />
+                            <Bookmark className="w-3.5 h-3.5 fill-amber-500 text-amber-500 shrink-0" />
                           )}
                         </div>
                       </td>
@@ -290,7 +290,7 @@ export const ApplicationsPage: React.FC = () => {
                         <select
                           value={app.status}
                           onChange={(e) => updateStatus(app.id, e.target.value as JobStatus)}
-                          className="bg-slate-900 border border-slate-700 rounded-md text-[11px] font-medium py-1 px-2 text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+                          className="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md text-[11px] font-medium py-1 px-2 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
                         >
                           <option value="Wishlist">Wishlist</option>
                           <option value="Applied">Applied</option>
@@ -305,11 +305,11 @@ export const ApplicationsPage: React.FC = () => {
                         <WorkModeBadge mode={app.workMode} size="sm" />
                       </td>
 
-                      <td className="py-3 px-4 text-slate-400 truncate max-w-[120px]">
+                      <td className="py-3 px-4 text-slate-600 dark:text-slate-400 truncate max-w-[120px]">
                         {app.location}
                       </td>
 
-                      <td className="py-3 px-4 font-medium text-slate-300">
+                      <td className="py-3 px-4 font-medium text-slate-800 dark:text-slate-300">
                         {formatSalaryRange(
                           app.salaryMin,
                           app.salaryMax,
@@ -318,7 +318,7 @@ export const ApplicationsPage: React.FC = () => {
                         )}
                       </td>
 
-                      <td className="py-3 px-4 text-slate-400 whitespace-nowrap">
+                      <td className="py-3 px-4 text-slate-500 dark:text-slate-400 whitespace-nowrap">
                         {formatDate(app.appliedDate)}
                       </td>
 
@@ -326,14 +326,14 @@ export const ApplicationsPage: React.FC = () => {
                         <div className="flex items-center justify-end gap-1">
                           <button
                             onClick={() => openEditModal(app)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 transition-colors"
                             title="Edit"
                           >
                             <Edit3 className="w-3.5 h-3.5" />
                           </button>
                           <button
                             onClick={() => setSingleDeleteJob(app)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:text-rose-400 dark:hover:bg-rose-500/10 transition-colors"
                             title="Delete"
                           >
                             <Trash2 className="w-3.5 h-3.5" />
