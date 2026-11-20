@@ -66,24 +66,24 @@ export const KanbanPage: React.FC = () => {
       {/* Kanban Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-            <KanbanSquare className="w-6 h-6 text-indigo-400" />
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+            <KanbanSquare className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
             <span>Workflow Kanban</span>
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
             Drag applications across columns to update pipeline status automatically.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
               placeholder="Filter board..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-slate-900/80 border border-slate-800 text-slate-200 text-xs rounded-xl pl-9 pr-3 py-2 w-48 sm:w-60 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+              className="bg-white dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 text-xs rounded-xl pl-9 pr-3 py-2 w-48 sm:w-60 focus:outline-none focus:ring-1 focus:ring-indigo-500 transition-colors"
             />
           </div>
 
