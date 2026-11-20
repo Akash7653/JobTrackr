@@ -31,13 +31,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       primary:
         'bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white shadow-sm shadow-indigo-600/30 border border-indigo-500/30 hover:border-indigo-400/50',
       secondary:
-        'bg-slate-800/80 hover:bg-slate-700/80 active:bg-slate-800 text-slate-200 hover:text-white border border-slate-700/60 dark:border-slate-700/50 light:bg-slate-100 light:text-slate-800 light:hover:bg-slate-200 light:border-slate-300',
+        'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 dark:text-slate-200 dark:border-slate-700/60',
       outline:
-        'bg-transparent hover:bg-slate-800/40 text-slate-300 hover:text-white border border-slate-700/80 dark:border-slate-700 light:border-slate-300 light:text-slate-700 light:hover:bg-slate-100',
+        'bg-transparent hover:bg-slate-100 text-slate-700 border-slate-300 dark:hover:bg-slate-800/50 dark:text-slate-300 dark:border-slate-700 dark:hover:text-white',
       ghost:
-        'bg-transparent hover:bg-slate-800/60 active:bg-slate-800/90 text-slate-400 hover:text-slate-200 light:text-slate-600 light:hover:text-slate-900 light:hover:bg-slate-100',
+        'bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900 dark:hover:bg-slate-800/60 dark:text-slate-400 dark:hover:text-slate-200',
       danger:
-        'bg-rose-500/10 hover:bg-rose-500/20 active:bg-rose-500/30 text-rose-400 border border-rose-500/30 hover:border-rose-500/50',
+        'bg-rose-50 hover:bg-rose-100 text-rose-600 border-rose-200 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 dark:text-rose-400 dark:border-rose-500/30',
     };
 
     const sizes = {
