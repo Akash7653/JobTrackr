@@ -200,7 +200,7 @@ export const CommandPalette: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/75 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/50 dark:bg-black/75 backdrop-blur-sm"
             onClick={() => setIsCommandPaletteOpen(false)}
           />
 
@@ -209,12 +209,12 @@ export const CommandPalette: React.FC = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.15 }}
-            className="relative w-full max-w-xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-10"
+            className="relative w-full max-w-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-10"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search Input Bar */}
-            <div className="flex items-center px-4 border-b border-slate-800/80 bg-slate-900/60">
-              <Search className="w-5 h-5 text-slate-400 shrink-0 mr-3" />
+            <div className="flex items-center px-4 border-b border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/60">
+              <Search className="w-5 h-5 text-slate-400 dark:text-slate-500 shrink-0 mr-3" />
               <input
                 ref={inputRef}
                 value={query}
@@ -224,9 +224,9 @@ export const CommandPalette: React.FC = () => {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder="Search applications, actions, companies, or commands..."
-                className="w-full bg-transparent py-4 text-slate-100 placeholder-slate-500 text-sm focus:outline-none"
+                className="w-full bg-transparent py-4 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none"
               />
-              <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-slate-400 bg-slate-800 border border-slate-700/60 rounded-md">
+              <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700/60 rounded-md">
                 ESC
               </kbd>
             </div>
@@ -234,7 +234,7 @@ export const CommandPalette: React.FC = () => {
             {/* List Results */}
             <div className="max-h-96 overflow-y-auto p-2">
               {query && filteredApps.length > 0 && (
-                <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider uppercase text-slate-500">
+                <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider uppercase text-slate-400 dark:text-slate-500">
                   Applications ({filteredApps.length})
                 </div>
               )}
@@ -256,17 +256,17 @@ export const CommandPalette: React.FC = () => {
                         onMouseEnter={() => setSelectedIndex(idx)}
                         className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${
                           isSelected
-                            ? 'bg-indigo-600/15 border border-indigo-500/30 text-white'
-                            : 'hover:bg-slate-800/40 border border-transparent text-slate-200'
+                            ? 'bg-indigo-50 border border-indigo-200 text-indigo-900 dark:bg-indigo-600/15 dark:border-indigo-500/30 dark:text-white'
+                            : 'hover:bg-slate-50 dark:hover:bg-slate-800/40 border border-transparent text-slate-700 dark:text-slate-200'
                         }`}
                       >
                         <div className="flex items-center gap-3 min-w-0">
                           <CompanyAvatar company={app.company} size="sm" />
                           <div className="min-w-0">
-                            <div className="text-sm font-medium text-slate-100 truncate">
+                            <div className="text-sm font-medium text-slate-900 dark:text-slate-100 truncate">
                               {app.jobTitle}
                             </div>
-                            <div className="text-xs text-slate-400 truncate">
+                            <div className="text-xs text-slate-500 dark:text-slate-400 truncate">
                               {app.company} • {app.location}
                             </div>
                           </div>
@@ -274,8 +274,8 @@ export const CommandPalette: React.FC = () => {
                         <div className="flex items-center gap-2 shrink-0 ml-3">
                           <StatusBadge status={app.status} size="sm" />
                           <ArrowRight
-                            className={`w-3.5 h-3.5 text-slate-500 transition-transform ${
-                              isSelected ? 'translate-x-0.5 text-indigo-400' : ''
+                            className={`w-3.5 h-3.5 text-slate-400 dark:text-slate-500 transition-transform ${
+                              isSelected ? 'translate-x-0.5 text-indigo-600 dark:text-indigo-400' : ''
                             }`}
                           />
                         </div>
@@ -291,22 +291,22 @@ export const CommandPalette: React.FC = () => {
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`flex items-center justify-between p-3 rounded-xl cursor-pointer transition-all ${
                         isSelected
-                          ? 'bg-slate-800/80 border border-slate-700/60 text-white'
-                          : 'hover:bg-slate-800/30 border border-transparent text-slate-300'
+                          ? 'bg-slate-100 border border-slate-300 text-slate-900 dark:bg-slate-800/80 dark:border-slate-700/60 dark:text-white'
+                          : 'hover:bg-slate-50 dark:hover:bg-slate-800/30 border border-transparent text-slate-700 dark:text-slate-300'
                       }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-8 h-8 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/60 flex items-center justify-center shrink-0">
                           {act.icon}
                         </div>
                         <div className="min-w-0">
-                          <div className="text-sm font-medium text-slate-200">{act.title}</div>
-                          <div className="text-xs text-slate-400">{act.subtitle}</div>
+                          <div className="text-sm font-medium text-slate-900 dark:text-slate-200">{act.title}</div>
+                          <div className="text-xs text-slate-500 dark:text-slate-400">{act.subtitle}</div>
                         </div>
                       </div>
                       <ArrowRight
-                        className={`w-3.5 h-3.5 text-slate-500 transition-transform shrink-0 ${
-                          isSelected ? 'translate-x-0.5 text-slate-300' : ''
+                        className={`w-3.5 h-3.5 text-slate-400 dark:text-slate-500 transition-transform shrink-0 ${
+                          isSelected ? 'translate-x-0.5 text-slate-700 dark:text-slate-300' : ''
                         }`}
                       />
                     </div>
@@ -316,14 +316,14 @@ export const CommandPalette: React.FC = () => {
             </div>
 
             {/* Footer */}
-            <div className="p-2.5 px-4 bg-slate-900/90 border-t border-slate-800/60 flex items-center justify-between text-[11px] text-slate-500">
+            <div className="p-2.5 px-4 bg-slate-50/90 dark:bg-slate-900/90 border-t border-slate-200 dark:border-slate-800/60 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+                <Sparkles className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
                 Quick jump & actions
               </span>
               <div className="flex items-center gap-3">
-                <span>Navigate: <kbd className="font-mono text-slate-400">↑</kbd> <kbd className="font-mono text-slate-400">↓</kbd></span>
-                <span>Select: <kbd className="font-mono text-slate-400">↵</kbd></span>
+                <span>Navigate: <kbd className="font-mono text-slate-600 dark:text-slate-400">↑</kbd> <kbd className="font-mono text-slate-600 dark:text-slate-400">↓</kbd></span>
+                <span>Select: <kbd className="font-mono text-slate-600 dark:text-slate-400">↵</kbd></span>
               </div>
             </div>
           </motion.div>
