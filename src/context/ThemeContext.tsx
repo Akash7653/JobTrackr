@@ -3,6 +3,7 @@ import { ThemeMode } from '../types/user';
 
 interface ThemeContextValue {
   theme: ThemeMode;
+  isDark: boolean;
   toggleTheme: () => void;
   setTheme: (mode: ThemeMode) => void;
 }
@@ -48,7 +49,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, isDark: theme === 'dark', toggleTheme, setTheme }}>
       {children}
     </ThemeContext.Provider>
   );
