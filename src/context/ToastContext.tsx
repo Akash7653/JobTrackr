@@ -54,10 +54,10 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             };
 
             const borderColors = {
-              success: 'border-emerald-500/20 bg-slate-900/95 text-slate-100',
-              error: 'border-rose-500/20 bg-slate-900/95 text-slate-100',
-              warning: 'border-amber-500/20 bg-slate-900/95 text-slate-100',
-              info: 'border-indigo-500/20 bg-slate-900/95 text-slate-100',
+              success: 'border-emerald-500/30 bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-xl',
+              error: 'border-rose-500/30 bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-xl',
+              warning: 'border-amber-500/30 bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-xl',
+              info: 'border-indigo-500/30 bg-white dark:bg-slate-900/95 text-slate-900 dark:text-slate-100 shadow-xl',
             };
 
             return (
@@ -67,22 +67,22 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ duration: 0.18, ease: 'easeOut' }}
-                className={`pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl border shadow-2xl backdrop-blur-md ${borderColors[toast.type]}`}
+                className={`pointer-events-auto flex items-start gap-3 p-3.5 rounded-xl border backdrop-blur-md ${borderColors[toast.type]}`}
               >
                 {icons[toast.type]}
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold tracking-tight text-slate-100">
+                  <div className="text-sm font-semibold tracking-tight text-slate-900 dark:text-slate-100">
                     {toast.title}
                   </div>
                   {toast.message && (
-                    <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                    <div className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
                       {toast.message}
                     </div>
                   )}
                 </div>
                 <button
                   onClick={() => removeToast(toast.id)}
-                  className="text-slate-500 hover:text-slate-300 transition-colors p-1 -mr-1 -mt-1 rounded-lg"
+                  className="text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-300 transition-colors p-1 -mr-1 -mt-1 rounded-lg"
                   aria-label="Close notification"
                 >
                   <X className="w-4 h-4" />
