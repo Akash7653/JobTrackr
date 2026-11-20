@@ -9,12 +9,16 @@ import {
   CartesianGrid,
 } from 'recharts';
 import { JobApplication } from '../../types/job';
+import { useTheme } from '../../context/ThemeContext';
 
 interface ActivityChartProps {
   applications: JobApplication[];
 }
 
 export const ActivityChart: React.FC<ActivityChartProps> = ({ applications }) => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
+
   // Aggregate applications into chronological date buckets (last 6 weeks)
   const chartData = useMemo(() => {
     const buckets: Record<string, { label: string; date: Date; applications: number; interviews: number }> = {};
@@ -66,23 +70,23 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ applications }) =>
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-slate-900/95 border border-slate-700/80 p-3 rounded-xl shadow-2xl backdrop-blur-md text-xs">
-          <p className="font-semibold text-slate-200 mb-1.5">Week of {label}</p>
+        <div className="bg-white dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700/80 p-3 rounded-xl shadow-xl backdrop-blur-md text-xs">
+          <p className="font-semibold text-slate-900 dark:text-slate-200 mb-1.5">Week of {label}</p>
           <div className="space-y-1">
-            <div className="flex items-center justify-between gap-4 text-indigo-400">
+            <div className="flex items-center justify-between gap-4 text-indigo-600 dark:text-indigo-400">
               <span className="flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-indigo-500" />
                 Applications
               </span>
-              <span className="font-bold text-slate-100">{payload[0].value}</span>
+              <span className="font-bold text-slate-900 dark:text-slate-100">{payload[0].value}</span>
             </div>
             {payload[1] && (
-              <div className="flex items-center justify-between gap-4 text-purple-400">
+              <div className="flex items-center justify-between gap-4 text-purple-600 dark:text-purple-400">
                 <span className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-purple-500" />
                   Interviews
                 </span>
-                <span className="font-bold text-slate-100">{payload[1].value}</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100">{payload[1].value}</span>
               </div>
             )}
           </div>
@@ -93,20 +97,20 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ applications }) =>
   };
 
   return (
-    <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 flex flex-col h-full">
+    <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 shadow-xs dark:shadow-none flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-sm font-semibold text-slate-100 tracking-tight">
+          <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 tracking-tight">
             Application Velocity
           </h3>
-          <p className="text-xs text-slate-400">Activity and interview milestones over time</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Activity and interview milestones over time</p>
         </div>
         <div className="flex items-center gap-3 text-xs">
-          <span className="flex items-center gap-1.5 text-slate-400">
+          <span className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
             <span className="w-2 h-2 rounded-full bg-indigo-500" />
             Applications
           </span>
-          <span className="flex items-center gap-1.5 text-slate-400">
+          <span className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
             <span className="w-2 h-2 rounded-full bg-purple-500" />
             Interviews
           </span>
@@ -126,19 +130,19 @@ export const ActivityChart: React.FC<ActivityChartProps> = ({ applications }) =>
                 <stop offset="95%" stopColor="#A855F7" stopOpacity={0.0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" vertical={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#1E293B' : '#E2E8F0'} vertical={false} />
             <XAxis
               dataKey="label"
-              stroke="#64748B"
+              stroke={isDark ? '#64748B' : '#94A3B8'}
               fontSize={11}
               tickLine={false}
-              axisLine={{ stroke: '#1E293B' }}
+              axisLine={{ stroke: isDark ? '#1E293B' : '#E2E8F0' }}
             />
             <YAxis
-              stroke="#64748B"
+              stroke={isDark ? '#64748B' : '#94A3B8'}
               fontSize={11}
               tickLine={false}
-              axisLine={{ stroke: '#1E293B' }}
+              axisLine={{ stroke: isDark ? '#1E293B' : '#E2E8F0' }}
               allowDecimals={false}
             />
             <Tooltip content={<CustomTooltip />} />
