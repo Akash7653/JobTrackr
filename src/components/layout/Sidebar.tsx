@@ -71,9 +71,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-[#0A0D14] border-r border-slate-800/80 select-none">
+    <div className="flex flex-col h-full bg-white dark:bg-[#0A0D14] border-r border-slate-200 dark:border-slate-800/80 select-none">
       {/* Brand Header */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-slate-800/80">
+      <div className="h-16 flex items-center justify-between px-4 border-b border-slate-200 dark:border-slate-800/80">
         <div className="flex items-center gap-3 overflow-hidden">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20 shrink-0">
             <svg
@@ -92,13 +92,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
           {!isCollapsed && (
             <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-tight text-white flex items-center gap-1.5">
+              <span className="font-bold text-sm tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
                 JobTrackr
-                <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+                <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30">
                   PRO
                 </span>
               </span>
-              <span className="text-[11px] text-slate-400">Application Suite</span>
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">Application Suite</span>
             </div>
           )}
         </div>
@@ -106,7 +106,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Desktop Collapse Button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="hidden md:flex p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition-colors"
+          className="hidden md:flex p-1.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/60 transition-colors"
           title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
@@ -137,7 +137,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Navigation List */}
       <nav className="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
-        <div className="text-[10px] uppercase font-semibold text-slate-500 px-3 py-1 tracking-wider">
+        <div className="text-[10px] uppercase font-semibold text-slate-400 dark:text-slate-500 px-3 py-1 tracking-wider">
           {!isCollapsed ? 'Platform' : '•'}
         </div>
         {navItems.map((item) => {
@@ -150,8 +150,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className={({ isActive }) =>
                 `flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-150 group relative ${
                   isActive
-                    ? 'bg-indigo-600/15 text-white font-semibold border border-indigo-500/30 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 border border-transparent'
+                    ? 'bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200/80 shadow-xs dark:bg-indigo-600/15 dark:text-white dark:border-indigo-500/30'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800/40 border border-transparent'
                 }`
               }
             >
@@ -159,7 +159,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 <>
                   <Icon
                     className={`w-4 h-4 shrink-0 transition-colors ${
-                      isActive ? 'text-indigo-400' : 'text-slate-400 group-hover:text-slate-200'
+                      isActive
+                        ? 'text-indigo-600 dark:text-indigo-400'
+                        : 'text-slate-400 group-hover:text-slate-600 dark:text-slate-400 dark:group-hover:text-slate-200'
                     }`}
                   />
                   {!isCollapsed && (
@@ -169,8 +171,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     <span
                       className={`text-[10px] px-2 py-0.5 rounded-full font-semibold shrink-0 ${
                         item.badgeHighlight
-                          ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30 animate-pulse-subtle'
-                          : 'bg-slate-800 text-slate-400'
+                          ? 'bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30 animate-pulse-subtle'
+                          : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400'
                       }`}
                     >
                       {item.badge}
@@ -188,17 +190,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Target Salary / Career Goal Widget (if expanded) */}
       {!isCollapsed && (
-        <div className="p-3 mx-3 mb-3 rounded-xl bg-slate-900/60 border border-slate-800/80 p-3">
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-1.5">
-            <span className="flex items-center gap-1.5 text-slate-300 font-medium text-[11px]">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+        <div className="p-3 mx-3 mb-3 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80">
+          <div className="flex items-center justify-between text-xs mb-1.5">
+            <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 font-medium text-[11px]">
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
               Target Goal
             </span>
-            <span className="text-[11px] text-slate-400">
+            <span className="text-[11px] font-semibold text-slate-600 dark:text-slate-400">
               ${(userProfile.targetSalary / 1000).toFixed(0)}k/yr
             </span>
           </div>
-          <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+          <div className="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
             <div
               className="bg-gradient-to-r from-indigo-500 to-emerald-400 h-1.5 rounded-full transition-all duration-500"
               style={{
@@ -228,25 +230,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
 
       {/* User Profile Footer */}
-      <div className="p-3 border-t border-slate-800/80 bg-slate-900/40">
+      <div className="p-3 border-t border-slate-200 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-900/40">
         <NavLink
           to="/settings"
           onClick={() => setIsMobileOpen(false)}
-          className={`flex items-center gap-3 p-1.5 rounded-xl hover:bg-slate-800/50 transition-colors group ${
+          className={`flex items-center gap-3 p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors group ${
             isCollapsed ? 'justify-center' : ''
           }`}
         >
           <img
             src={userProfile.avatarUrl}
             alt={userProfile.name}
-            className="w-9 h-9 rounded-xl object-cover border border-slate-700/60 shrink-0"
+            className="w-9 h-9 rounded-xl object-cover border border-slate-200 dark:border-slate-700/60 shrink-0"
           />
           {!isCollapsed && (
             <div className="flex flex-col min-w-0">
-              <span className="text-xs font-semibold text-slate-200 truncate group-hover:text-white">
+              <span className="text-xs font-semibold text-slate-900 dark:text-slate-200 truncate group-hover:text-indigo-600 dark:group-hover:text-white">
                 {userProfile.name}
               </span>
-              <span className="text-[11px] text-slate-400 truncate">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
                 {userProfile.targetRole}
               </span>
             </div>
