@@ -90,14 +90,14 @@ export function getInitials(name: string): string {
 }
 
 const BRAND_PALETTE = [
-  { bg: 'bg-indigo-500/15', text: 'text-indigo-400', border: 'border-indigo-500/30' },
-  { bg: 'bg-violet-500/15', text: 'text-violet-400', border: 'border-violet-500/30' },
-  { bg: 'bg-sky-500/15', text: 'text-sky-400', border: 'border-sky-500/30' },
-  { bg: 'bg-emerald-500/15', text: 'text-emerald-400', border: 'border-emerald-500/30' },
-  { bg: 'bg-amber-500/15', text: 'text-amber-400', border: 'border-amber-500/30' },
-  { bg: 'bg-rose-500/15', text: 'text-rose-400', border: 'border-rose-500/30' },
-  { bg: 'bg-cyan-500/15', text: 'text-cyan-400', border: 'border-cyan-500/30' },
-  { bg: 'bg-fuchsia-500/15', text: 'text-fuchsia-400', border: 'border-fuchsia-500/30' },
+  { bg: 'bg-indigo-500/15', text: 'text-indigo-600 dark:text-indigo-400', border: 'border-indigo-500/30' },
+  { bg: 'bg-violet-500/15', text: 'text-violet-600 dark:text-violet-400', border: 'border-violet-500/30' },
+  { bg: 'bg-sky-500/15', text: 'text-sky-600 dark:text-sky-400', border: 'border-sky-500/30' },
+  { bg: 'bg-emerald-500/15', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-500/30' },
+  { bg: 'bg-amber-500/15', text: 'text-amber-600 dark:text-amber-400', border: 'border-amber-500/30' },
+  { bg: 'bg-rose-500/15', text: 'text-rose-600 dark:text-rose-400', border: 'border-rose-500/30' },
+  { bg: 'bg-cyan-500/15', text: 'text-cyan-600 dark:text-cyan-400', border: 'border-cyan-500/30' },
+  { bg: 'bg-fuchsia-500/15', text: 'text-fuchsia-600 dark:text-fuchsia-400', border: 'border-fuchsia-500/30' },
 ];
 
 export function getCompanyColorClass(company: string) {
@@ -115,48 +115,48 @@ export function getStatusConfig(status: JobStatus) {
       return {
         label: 'Wishlist',
         color: '#94A3B8', // slate-400
-        badgeClass: 'bg-slate-500/10 text-slate-300 border-slate-500/20',
-        dotClass: 'bg-slate-400',
-        indicator: 'border-slate-500',
+        badgeClass: 'bg-slate-500/10 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-500/30',
+        dotClass: 'bg-slate-500 dark:bg-slate-400',
+        indicator: 'border-slate-400 dark:border-slate-500',
       };
     case 'Applied':
       return {
         label: 'Applied',
-        color: '#38BDF8', // sky-400
-        badgeClass: 'bg-sky-500/10 text-sky-400 border-sky-500/20',
-        dotClass: 'bg-sky-400',
+        color: '#0284C7', // sky-600
+        badgeClass: 'bg-sky-500/10 text-sky-700 dark:text-sky-400 border-sky-300 dark:border-sky-500/30',
+        dotClass: 'bg-sky-500 dark:bg-sky-400',
         indicator: 'border-sky-500',
       };
     case 'Assessment':
       return {
         label: 'Assessment',
-        color: '#F59E0B', // amber-500
-        badgeClass: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-        dotClass: 'bg-amber-400',
+        color: '#D97706', // amber-600
+        badgeClass: 'bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-300 dark:border-amber-500/30',
+        dotClass: 'bg-amber-500 dark:bg-amber-400',
         indicator: 'border-amber-500',
       };
     case 'Interview':
       return {
         label: 'Interview',
-        color: '#A855F7', // purple-500
-        badgeClass: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-        dotClass: 'bg-purple-400',
+        color: '#9333EA', // purple-600
+        badgeClass: 'bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-300 dark:border-purple-500/30',
+        dotClass: 'bg-purple-500 dark:bg-purple-400',
         indicator: 'border-purple-500',
       };
     case 'Offer':
       return {
         label: 'Offer',
-        color: '#10B981', // emerald-500
-        badgeClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-        dotClass: 'bg-emerald-400',
+        color: '#059669', // emerald-600
+        badgeClass: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30',
+        dotClass: 'bg-emerald-500 dark:bg-emerald-400',
         indicator: 'border-emerald-500',
       };
     case 'Rejected':
       return {
         label: 'Rejected',
-        color: '#F43F5E', // rose-500
-        badgeClass: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
-        dotClass: 'bg-rose-400',
+        color: '#E11D48', // rose-600
+        badgeClass: 'bg-rose-500/10 text-rose-700 dark:text-rose-400 border-rose-300 dark:border-rose-500/30',
+        dotClass: 'bg-rose-500 dark:bg-rose-400',
         indicator: 'border-rose-500',
       };
   }
@@ -167,17 +167,17 @@ export function getWorkModeConfig(mode: WorkMode) {
     case 'Remote':
       return {
         label: 'Remote',
-        badgeClass: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+        badgeClass: 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30',
       };
     case 'Hybrid':
       return {
         label: 'Hybrid',
-        badgeClass: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+        badgeClass: 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-300 dark:border-indigo-500/30',
       };
     case 'Onsite':
       return {
         label: 'Onsite',
-        badgeClass: 'bg-slate-500/10 text-slate-300 border-slate-500/20',
+        badgeClass: 'bg-slate-500/10 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-500/30',
       };
   }
 }
@@ -185,11 +185,11 @@ export function getWorkModeConfig(mode: WorkMode) {
 export function getPriorityConfig(priority?: JobPriority) {
   switch (priority) {
     case 'High':
-      return { label: 'High', colorClass: 'text-rose-400 bg-rose-500/10 border-rose-500/20' };
+      return { label: 'High', colorClass: 'text-rose-700 dark:text-rose-400 bg-rose-500/10 border-rose-300 dark:border-rose-500/30' };
     case 'Medium':
-      return { label: 'Med', colorClass: 'text-amber-400 bg-amber-500/10 border-amber-500/20' };
+      return { label: 'Med', colorClass: 'text-amber-700 dark:text-amber-400 bg-amber-500/10 border-amber-300 dark:border-amber-500/30' };
     case 'Low':
-      return { label: 'Low', colorClass: 'text-slate-400 bg-slate-500/10 border-slate-500/20' };
+      return { label: 'Low', colorClass: 'text-slate-700 dark:text-slate-400 bg-slate-500/10 border-slate-300 dark:border-slate-500/30' };
     default:
       return { label: '', colorClass: '' };
   }
