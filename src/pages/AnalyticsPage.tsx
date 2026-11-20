@@ -12,10 +12,12 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { useJobContext } from '../context/JobContext';
+import { useTheme } from '../context/ThemeContext';
 import { formatCurrency } from '../utils/formatters';
 
 export const AnalyticsPage: React.FC = () => {
   const { applications, stats, userProfile } = useJobContext();
+  const { isDark } = useTheme();
 
   // 1. Funnel Stages Breakdown
   const funnelData = useMemo(() => {
@@ -175,56 +177,56 @@ export const AnalyticsPage: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          <TrendingUp className="w-6 h-6 text-indigo-400" />
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
+          <TrendingUp className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
           <span>Career & Funnel Analytics</span>
         </h2>
-        <p className="text-xs sm:text-sm text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
           Real-time metrics, pipeline conversion rates, and compensation intelligence.
         </p>
       </div>
 
       {/* Top 4 Key Rate Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span className="text-xs text-slate-400">Interview Rate</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-purple-400 mt-1">
+        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none">
+          <span className="text-xs text-slate-500 dark:text-slate-400">Interview Rate</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400 mt-1">
             {stats.interviewRate}%
           </div>
-          <span className="text-[11px] text-slate-500">Screen to onsite conversion</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Screen to onsite conversion</span>
         </div>
 
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span className="text-xs text-slate-400">Offer Success Rate</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">
+        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none">
+          <span className="text-xs text-slate-500 dark:text-slate-400">Offer Success Rate</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-1">
             {stats.successRate}%
           </div>
-          <span className="text-[11px] text-slate-500">Applications to offer</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Applications to offer</span>
         </div>
 
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span className="text-xs text-slate-400">Average Compensation</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 mt-1">
+        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none">
+          <span className="text-xs text-slate-500 dark:text-slate-400">Average Compensation</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-indigo-600 dark:text-indigo-400 mt-1">
             {salaryInsights.avg ? formatCurrency(salaryInsights.avg) : 'N/A'}
           </div>
-          <span className="text-[11px] text-slate-500">Target salary average</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Target salary average</span>
         </div>
 
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <span className="text-xs text-slate-400">Target Role Goal</span>
-          <div className="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1">
+        <div className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none">
+          <span className="text-xs text-slate-500 dark:text-slate-400">Target Role Goal</span>
+          <div className="text-2xl sm:text-3xl font-extrabold text-amber-600 dark:text-amber-400 mt-1">
             {formatCurrency(userProfile.targetSalary)}
           </div>
-          <span className="text-[11px] text-slate-500">Annual baseline preference</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Annual baseline preference</span>
         </div>
       </div>
 
       {/* Conversion Funnel & Work Mode Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Recruitment Pipeline Funnel (7 Cols) */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col">
-          <h3 className="text-sm font-semibold text-slate-100 mb-1">Application Funnel Stages</h3>
-          <p className="text-xs text-slate-400 mb-5">
+        <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none flex flex-col">
+          <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">Application Funnel Stages</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mb-5">
             Conversion performance from initial application to final offer
           </p>
 
@@ -232,14 +234,14 @@ export const AnalyticsPage: React.FC = () => {
             {funnelData.map((stage) => (
               <div key={stage.stage} className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-medium text-slate-200">{stage.stage}</span>
+                  <span className="font-medium text-slate-700 dark:text-slate-200">{stage.stage}</span>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-white">{stage.count}</span>
-                    <span className="text-[11px] text-slate-400 font-mono">({stage.pct}%)</span>
+                    <span className="font-bold text-slate-900 dark:text-white">{stage.count}</span>
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">({stage.pct}%)</span>
                   </div>
                 </div>
 
-                <div className="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden">
+                <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
                   <div
                     className="h-2.5 rounded-full transition-all duration-500"
                     style={{
@@ -254,23 +256,23 @@ export const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Work Mode Breakdown (5 Cols) */}
-        <div className="lg:col-span-5 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+        <div className="lg:col-span-5 p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none flex flex-col justify-between">
           <div>
-            <h3 className="text-sm font-semibold text-slate-100 mb-1">Work Mode Distribution</h3>
-            <p className="text-xs text-slate-400 mb-4">
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">Work Mode Distribution</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
               Breakdown across Remote, Hybrid, and Onsite
             </p>
 
             <div className="space-y-3.5 mt-2">
               {workModeData.map((item) => (
-                <div key={item.mode} className="p-3 rounded-xl bg-slate-800/30 border border-slate-800">
+                <div key={item.mode} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800">
                   <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-slate-200">{item.mode}</span>
-                    <span className="font-mono text-slate-400">
+                    <span className="font-semibold text-slate-800 dark:text-slate-200">{item.mode}</span>
+                    <span className="font-mono text-slate-500 dark:text-slate-400">
                       {item.count} roles ({item.pct}%)
                     </span>
                   </div>
-                  <div className="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                  <div className="w-full bg-slate-200/70 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
                     <div
                       className="h-2 rounded-full transition-all duration-300"
                       style={{
@@ -285,17 +287,17 @@ export const AnalyticsPage: React.FC = () => {
           </div>
 
           {/* Salary Spread Box */}
-          <div className="mt-4 p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-xs">
-            <div className="flex items-center justify-between text-indigo-300 font-semibold mb-1">
+          <div className="mt-4 p-3.5 rounded-xl bg-indigo-50/80 dark:bg-indigo-500/10 border border-indigo-200 dark:border-indigo-500/20 text-xs">
+            <div className="flex items-center justify-between text-indigo-700 dark:text-indigo-300 font-semibold mb-1">
               <span>Salary Spread</span>
               <span>
                 {salaryInsights.min ? formatCurrency(salaryInsights.min) : '$0'} –{' '}
                 {salaryInsights.max ? formatCurrency(salaryInsights.max) : '$0'}
               </span>
             </div>
-            <p className="text-[11px] text-slate-400">
+            <p className="text-[11px] text-slate-600 dark:text-slate-400">
               Median role compensation in your active pipeline is{' '}
-              <span className="text-slate-200 font-medium">
+              <span className="text-slate-900 dark:text-slate-200 font-medium">
                 {salaryInsights.median ? formatCurrency(salaryInsights.median) : 'N/A'}
               </span>
               .
@@ -307,25 +309,25 @@ export const AnalyticsPage: React.FC = () => {
       {/* Monthly Submissions Bar Chart & Category Trends Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Monthly Activity Bar Chart */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
-          <h3 className="text-sm font-semibold text-slate-100 mb-1">Monthly Application Volume</h3>
-          <p className="text-xs text-slate-400 mb-4">
+        <div className="lg:col-span-7 p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none">
+          <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">Monthly Application Volume</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
             Submissions and offers won across recent months
           </p>
 
           <div className="h-64 w-full">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={monthlyActivityData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#1E293B" vertical={false} />
-                <XAxis dataKey="month" stroke="#64748B" fontSize={11} tickLine={false} />
-                <YAxis stroke="#64748B" fontSize={11} tickLine={false} allowDecimals={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke={isDark ? '#334155' : '#E2E8F0'} vertical={false} />
+                <XAxis dataKey="month" stroke={isDark ? '#94A3B8' : '#64748B'} fontSize={11} tickLine={false} />
+                <YAxis stroke={isDark ? '#94A3B8' : '#64748B'} fontSize={11} tickLine={false} allowDecimals={false} />
                 <Tooltip
                   content={({ active, payload, label }) => {
                     if (active && payload && payload.length) {
                       return (
-                        <div className="bg-slate-900/95 border border-slate-700 p-3 rounded-xl shadow-xl text-xs">
-                          <p className="font-semibold text-slate-200 mb-1">{label}</p>
-                          <div className="text-indigo-400">
+                        <div className="bg-white dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 p-3 rounded-xl shadow-xl text-xs text-slate-900 dark:text-slate-100">
+                          <p className="font-semibold text-slate-900 dark:text-slate-200 mb-1">{label}</p>
+                          <div className="text-indigo-600 dark:text-indigo-400">
                             Applications: <span className="font-bold">{payload[0]?.value}</span>
                           </div>
                         </div>
@@ -341,9 +343,9 @@ export const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Most Frequent Categories / Specializations */}
-        <div className="lg:col-span-5 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col">
-          <h3 className="text-sm font-semibold text-slate-100 mb-1">Role Specializations</h3>
-          <p className="text-xs text-slate-400 mb-4">
+        <div className="lg:col-span-5 p-5 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-xs dark:shadow-none flex flex-col">
+          <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-1">Role Specializations</h3>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
             Most frequently applied job types and tags
           </p>
 
@@ -351,15 +353,15 @@ export const AnalyticsPage: React.FC = () => {
             {categoryTrends.map((cat, idx) => (
               <div
                 key={cat.category}
-                className="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/30 border border-slate-800"
+                className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-800"
               >
                 <div className="flex items-center gap-2.5">
-                  <span className="w-5 h-5 rounded-lg bg-indigo-500/15 text-indigo-400 flex items-center justify-center text-xs font-bold">
+                  <span className="w-5 h-5 rounded-lg bg-indigo-100 dark:bg-indigo-500/15 text-indigo-700 dark:text-indigo-400 flex items-center justify-center text-xs font-bold">
                     {idx + 1}
                   </span>
-                  <span className="text-xs font-semibold text-slate-200">{cat.category} Roles</span>
+                  <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">{cat.category} Roles</span>
                 </div>
-                <span className="text-xs font-mono text-slate-400 font-medium">
+                <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">
                   {cat.count} application{cat.count === 1 ? '' : 's'}
                 </span>
               </div>
