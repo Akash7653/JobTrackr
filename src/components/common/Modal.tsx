@@ -56,7 +56,7 @@ export const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/50 dark:bg-black/75 backdrop-blur-sm"
             onClick={onClose}
           />
 
@@ -66,19 +66,19 @@ export const Modal: React.FC<ModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.18, ease: 'easeOut' }}
-            className={`relative w-full ${maxW} bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-10 my-auto`}
+            className={`relative w-full ${maxW} bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-10 my-auto`}
             onClick={(e) => e.stopPropagation()}
           >
             {(title || showCloseButton) && (
-              <div className="flex items-start justify-between p-5 pb-4 border-b border-slate-800/80">
+              <div className="flex items-start justify-between p-5 pb-4 border-b border-slate-200 dark:border-slate-800/80">
                 <div>
                   {title && (
-                    <h3 className="text-base font-semibold text-slate-100 tracking-tight">
+                    <div className="text-base font-semibold text-slate-900 dark:text-slate-100 tracking-tight">
                       {title}
-                    </h3>
+                    </div>
                   )}
                   {description && (
-                    <p className="text-xs text-slate-400 mt-1 leading-normal">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-normal">
                       {description}
                     </p>
                   )}
@@ -86,7 +86,7 @@ export const Modal: React.FC<ModalProps> = ({
                 {showCloseButton && (
                   <button
                     onClick={onClose}
-                    className="text-slate-400 hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-800/60 transition-colors -mr-1"
+                    className="text-slate-400 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors -mr-1"
                     aria-label="Close"
                   >
                     <X className="w-4 h-4" />
