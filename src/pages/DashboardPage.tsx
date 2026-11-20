@@ -26,20 +26,20 @@ export const DashboardPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Welcome & Target Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-950/60 via-slate-900 to-slate-900/90 border border-indigo-500/20 p-6 sm:p-8 shadow-2xl">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-50/80 via-white to-purple-50/50 dark:from-indigo-950/60 dark:via-slate-900 dark:to-slate-900/90 border border-indigo-200/70 dark:border-indigo-500/20 p-6 sm:p-8 shadow-xs dark:shadow-2xl">
         <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 text-xs font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100/80 border border-indigo-200 text-indigo-700 dark:bg-indigo-500/15 dark:border-indigo-500/30 dark:text-indigo-400 text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Targeting: {userProfile.targetRole}</span>
             </div>
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white tracking-tight">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
               Welcome back, {userProfile.name.split(' ')[0]} 👋
             </h1>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
-              You have <span className="text-indigo-300 font-semibold">{stats.inProgress} applications</span> currently active in your interview funnel, with{' '}
-              <span className="text-emerald-400 font-semibold">{stats.offersReceived} offer{stats.offersReceived === 1 ? '' : 's'}</span> received.
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
+              You have <span className="text-indigo-600 dark:text-indigo-300 font-semibold">{stats.inProgress} applications</span> currently active in your interview funnel, with{' '}
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{stats.offersReceived} offer{stats.offersReceived === 1 ? '' : 's'}</span> received.
             </p>
           </div>
 
