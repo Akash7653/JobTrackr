@@ -147,6 +147,12 @@ npm run build
 npm run preview
 ```
 
+### 6. 🎨 Centralized Design System & Dual-Theme Architecture
+- **Dual-Theme Fidelity**: High-contrast, WCAG AA compliant Light Theme alongside a deep charcoal Linear/Vercel-inspired Dark Theme.
+- **Semantic CSS Variable Tokens**: Centralized variables for `--bg-page`, `--bg-card`, `--text-primary`, `--border-primary`, and `--input-bg`.
+- **Zero-Flash Persistence**: Immediate HTML class bootstrapping in `index.html` preventing theme flash (FOUC) on hard reloads.
+- **Dynamic Chart Adaptation**: Recharts CartesianGrid, axes strokes, and interactive tooltips dynamically adapt to active theme tokens.
+
 ---
 
 ## 🔒 Security & Data Privacy
